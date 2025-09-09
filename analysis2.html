@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matrix Analysis</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    * { box-sizing: border-box; }  /* Edge overflow fix */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f8fafc;
+      padding-bottom: 70px; /* bottom nav ke liye space */
+    }
+
+    /* Topbar */
+    .topbar {
+      background: #fff;
+      display: flex;
+      align-items: center;
+      padding: 12px 16px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .topbar h2 {
+      margin: 0 auto;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    /* Table */
+    .analysis-table {
+      margin: 16px auto;
+      border-collapse: collapse;
+      width: 95%;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .analysis-table th {
+      background: #16a34a;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      font-size: 14px;
+    }
+    .analysis-table td {
+      padding: 10px;
+      text-align: center;
+      font-size: 14px;
+      border-bottom: 1px solid #eee;
+    }
+    .analysis-table tr:last-child td {
+      border-bottom: none;
+      font-weight: bold;
+      background: #f1fdf5;
+    }
+
+    /* Chart container */
+    .chart-container {
+      background: #fff;
+      margin: 16px auto;
+      padding: 12px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      width: 95%;
+    }
+    .chart-container h3 {
+      margin: 0 0 10px;
+      font-size: 15px;
+      color: #333;
+    }
+    .chart-box {
+      position: relative;
+      height: 200px; /* Fixed graph height */
+      width: 100%;
+    }
+
+    /* Bottom Nav */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      display: flex;
+      justify-content: space-around;
+      padding: 8px 0;
+      border-top: 1px solid #ccc;
+    }
+    .bottom-nav a {
+      text-decoration: none;
+      color: #333;
+      text-align: center;
+      font-size: 13px;
+    }
+    .bottom-nav a.active {
+      color: #16a34a;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <h2>Cumulative Analysis</h2>
+  </div>
+
+  <!-- Table -->
+  <table class="analysis-table">
+    <tr>
+      <th>Subject</th>
+      <th>Your Avg. Score</th>
+      <th>Overall Test Avg.</th>
+    </tr>
+    <tr>
+      <td>Physics</td>
+      <td>23.43</td>
+      <td>28.59</td>
+    </tr>
+    <tr>
+      <td>Chemistry</td>
+      <td>42.89</td>
+      <td>35.27</td>
+    </tr>
+    <tr>
+      <td>Maths</td>
+      <td>36.61</td>
+      <td>29.41</td>
+    </tr>
+    <tr>
+      <td>Overall</td>
+      <td>102.93</td>
+      <td>93.27</td>
+    </tr>
+  </table>
+
+  <!-- Chart -->
+  <div class="chart-container">
+    <h3>Relative Performance Timeline</h3>
+    <div class="chart-box">
+      <canvas id="performanceChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <div class="bottom-nav">
+    <a href="home.html">🏠 Home</a>
+    <a href="analysis2.html" class="active">📊 Analysis</a>
+    <a href="about.html">ℹ️ About Us</a>
+  </div>
+
+  <script>
+    // Chart.js data
+    const ctx = document.getElementById('performanceChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['T1','T2','T3','T4','T5','T6','T7'],
+        datasets: [{
+          label: 'Percentile',
+          data: [62, 74, 50, 45, 78, 60, 69],
+          borderColor: '#16a34a',
+          backgroundColor: 'rgba(22,163,74,0.1)',
+          fill: true,
+          tension: 0.3,
+          pointRadius: 3,
+          pointBackgroundColor: '#16a34a'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 120
+          }
+        },
+        plugins: {
+          legend: { display: false }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tests</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; padding:15px; background:#f9f9f9; }
+    .back { font-size:16px; color:#2e7d32; margin-bottom:15px; cursor:pointer; }
+    h2 { margin-top:0; }
+    .tabs { display:flex; gap:10px; margin-bottom:15px; }
+    .tab {
+      flex:1; text-align:center; padding:8px; border-radius:6px;
+      background:#e0e0e0; cursor:pointer; font-weight:bold;
+    }
+    .active { background:#16a34a; color:white; }
+    .test-card {
+      background:white; padding:15px; border-radius:10px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.1); margin-bottom:10px;
+    }
+    .test-card h3 { margin:0; font-size:16px; color:#16a34a; }
+    .test-card p { margin:5px 0; font-size:14px; }
+    .btn {
+      background:#16a34a; color:white; padding:8px 12px;
+      border:none; border-radius:6px; cursor:pointer; margin-top:8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="back" onclick="history.back()">← Back</div>
+  <h2>Tests</h2>
+
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('active')">Active</div>
+    <div class="tab" onclick="showTab('upcoming')">Upcoming</div>
+    <div class="tab" onclick="showTab('past')">Past</div>
+  </div>
+
+  <!-- Active Tests -->
+  <div id="active">
+    <p style="color:gray;">No active tests</p>
+  </div>
+
+  <!-- Upcoming Tests -->
+  <div id="upcoming" style="display:none;">
+    <div class="test-card">
+      <h3>Momentum JEE Mains Test 04</h3>
+      <p>Date: 5 oct.</p>
+      <button class="btn" onclick="window.location.href='test-analysis.html'">Syllabus</button>
+    </div>
+  </div>
+
+  <!-- Past Tests -->
+  <div id="past" style="display:none;">
+     <div class="test-card">
+      <h3>Momentum JEE Adv Test 04 Paper 2</h3>
+      <p>Date: 15 Sep</p>
+      <button class="btn" onclick="window.location.href='analysis3.html'">Result Analysis</button>
+    </div>
+     <div class="test-card">
+      <h3>Momentum JEE Adv Test 04 Paper 1</h3>
+      <p>Date: 15 Sep</p>
+      <button class="btn" onclick="window.location.href='analysis.html'">Result Analysis</button>
+    </div>
+    <div class="test-card">
+      <h3>Momentum JEE Mains Test 03</h3>
+      <p>Date: 17 Aug</p>
+      <button class="btn" onclick="window.location.href='analysis1.html'">Result Analysis</button>
+    </div>
+    <div class="test-card">
+      <h3>Momentum JEE Adv Test 03</h3>
+      <p>Date: 20 Jul.</p>
+      <button class="btn" onclick="window.location.href='test-analysis.html'">Syllabus</button>
+    </div>
+    <div class="test-card">
+      <h3>Momentum JEE Mains Test 02</h3>
+      <p>Date: 29 Jun.</p>
+      <button class="btn" onclick="window.location.href='test-analysis.html'">Syllabus</button>
+    </div>
+    <div class="test-card">
+      <h3>Momentum JEE Adv Test 02</h3>
+      <p>Date: 08 Jun.</p>
+      <button class="btn" onclick="window.location.href='test-analysis.html'">Syllabus</button>
+    </div>
+    <div class="test-card">
+      <h3>Momentum JEE adv Test 01</h3>
+      <p>Date: 11 May</p>
+      <button class="btn" onclick="window.location.href='analysis.html'">Syllabus</button>
+    </div>
+  </div>
+
+  <script>
+    function showTab(tabId){
+      document.querySelectorAll("#active,#upcoming,#past").forEach(div=>div.style.display="none");
+      document.getElementById(tabId).style.display="block";
+      document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+      event.target.classList.add("active");
+    }
+  </script>
+</body>
+
+</html>
+
